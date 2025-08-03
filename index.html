@@ -18,24 +18,29 @@
     }
 
     .top-bar {
+      position: relative;
+      width: 100vw;
+      height: 60px;
+      border-bottom: 2px solid black;
+      background: #f1f1f1;
       display: flex;
       align-items: center;
-      padding: 10px 20px;
-      border-bottom: 2px solid black;
+      padding: 0 20px;
     }
 
     .logo {
       height: 50px;
-    }
-
-    .spacer {
-      flex: 1;
+      z-index: 2;
+      /* stays left with padding from .top-bar */
     }
 
     .nav-links {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       gap: 40px;
-      /* no flex-grow here */
+      z-index: 1;
     }
 
     .nav-links a {
@@ -63,13 +68,11 @@
 <body>
   <div class="top-bar">
     <img src="logo.png" alt="logo" class="logo" />
-    <div class="spacer"></div>
     <div class="nav-links">
       <a href="index.html" class="active">home</a>
       <a href="shop.html">shop</a>
       <a href="about.html">about</a>
     </div>
-    <div class="spacer"></div>
   </div>
 
   <main>
