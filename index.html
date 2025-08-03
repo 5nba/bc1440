@@ -11,78 +11,57 @@
     }
 
     body {
+      background-color: black;
+      color: white;
       font-family: Impact, Charcoal, sans-serif;
-      background-color: white;
-      color: black;
-    }
-
-    header {
-      background: red;
-      padding: 20px;
       text-align: center;
-      color: yellow;
-      font-size: 48px;
-      border-bottom: 5px solid black;
+      padding: 40px 20px;
     }
 
-    .nav {
-      background: black;
-      padding: 10px;
-      text-align: center;
+    .title {
+      font-size: 72px;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
     }
 
-    .nav img {
-      height: 50px;
-      margin: 0 10px;
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .nav-buttons img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border: 3px solid white;
       cursor: pointer;
     }
 
-    main {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
+    .main-headline {
+      font-size: 56px;
+      font-weight: bold;
+      margin-bottom: 20px;
     }
 
-    .headline {
-      font-size: 40px;
-      color: red;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      border-bottom: 4px solid black;
-      padding-bottom: 10px;
-    }
-
-    .subhead {
-      font-size: 20px;
-      margin-bottom: 30px;
-      font-style: italic;
-    }
-
-    .article-preview {
-      font-size: 18px;
-      line-height: 1.6;
+    .subheadline {
+      font-size: 24px;
+      color: #ccc;
     }
   </style>
 </head>
 <body>
-  <header>
-    5NBA WEEKLY
-  </header>
+  <div class="title">5NBA WEEKLY</div>
 
-  <div class="nav">
-    <img src="home-btn.png" alt="Home">
-    <img src="articles-btn.png" alt="Articles">
-    <img src="contact-btn.png" alt="Contact">
+  <div class="nav-buttons">
+    <img src="btn1.png" alt="Button 1">
+    <img src="btn2.png" alt="Button 2">
+    <img src="btn3.png" alt="Button 3">
   </div>
 
-  <main>
-    <div class="headline">EXCLUSIVE: 5NBA CAUGHT IN STUDIO AT 3AM</div>
-    <div class="subhead">"he said the album's done... but is it really?"</div>
-    <div class="article-preview">
-      Sources say the rising artist known as 5nba was spotted tweaking mix levels deep into the night...
-      <br><br>
-      (more soon)
-    </div>
-  </main>
+  <div class="main-headline">EXCLUSIVE: 5NBA SEEN AT 3AM</div>
+
+  <div class="subheadline">album allegedly done — but we have questions</div>
 </body>
 </html>
