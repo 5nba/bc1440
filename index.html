@@ -58,20 +58,9 @@
       padding: 60px 20px;
     }
 
-    /* assistant styles */
-    #assistant {
-      margin-top: 60px;
-      max-width: 600px;
-      margin-inline: auto;
-    }
-
-    #assistant h2 {
-      margin-bottom: 20px;
-    }
-
+    /* grailed DM style chat */
     .messages {
       background: #f4f4f4;
-      border: 2px solid black;
       border-radius: 8px;
       padding: 15px;
       height: 300px;
@@ -86,18 +75,19 @@
     .message {
       max-width: 75%;
       padding: 10px 14px;
-      border-radius: 16px;
+      border-radius: 8px;
+      border: 1.5px solid black;
+      background: white;
       width: fit-content;
+      line-height: 1.4;
     }
 
     .bot {
       align-self: flex-start;
-      background: #ddd;
     }
 
     .user {
       align-self: flex-end;
-      background: #bbb;
     }
 
     .input-bar {
@@ -108,14 +98,19 @@
 
     .input-bar input {
       flex: 1;
-      padding: 12px;
+      padding: 12px 16px;
       font-family: Impact, sans-serif;
       font-size: 18px;
-      border: 2px solid black;
-      border-radius: 20px;
+      border-radius: 16px;
+      border: 1.5px solid black;
       background: white;
       color: black;
       outline: none;
+    }
+
+    .input-bar input:focus {
+      outline: 2px solid black;
+      outline-offset: 2px;
     }
   </style>
 </head>
@@ -175,13 +170,8 @@
 
       const responses = [
         {
-          keywords: ['music', 'drop', 'dropping'],
-          replies: [
-            'probably dropping something soon idk',
-            'no idea bro',
-            'music next week',
-            'just wait brah',
-          ],
+          keywords: ['music', 'drop', 'dropping', 'song'],
+          replies: ['probably dropping something soon idk', 'no idea bro', 'music next week', 'just wait brah'],
         },
         {
           keywords: ['shop', 'buy', 'clothes'],
