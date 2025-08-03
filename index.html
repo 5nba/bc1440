@@ -57,61 +57,6 @@
     main {
       padding: 60px 20px;
     }
-
-    /* grailed DM style chat */
-    .messages {
-      background: #f4f4f4;
-      border-radius: 8px;
-      padding: 15px;
-      height: 300px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-family: Impact, sans-serif;
-      font-size: 18px;
-    }
-
-    .message {
-      max-width: 75%;
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1.5px solid black;
-      background: white;
-      width: fit-content;
-      line-height: 1.4;
-    }
-
-    .bot {
-      align-self: flex-start;
-    }
-
-    .user {
-      align-self: flex-end;
-    }
-
-    .input-bar {
-      margin-top: 10px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .input-bar input {
-      flex: 1;
-      padding: 12px 16px;
-      font-family: Impact, sans-serif;
-      font-size: 18px;
-      border-radius: 16px;
-      border: 1.5px solid black;
-      background: white;
-      color: black;
-      outline: none;
-    }
-
-    .input-bar input:focus {
-      outline: 2px solid black;
-      outline-offset: 2px;
-    }
   </style>
 </head>
 <body>
@@ -126,71 +71,6 @@
 
   <main>
     <h1>welcome to bigchiefer1440</h1>
-    <p>this is where the sauce gets cooked. please wear goggles and a lab coat.</p>
-
-    <!-- assistant block -->
-    <section id="assistant">
-      <h2>chieferOS assistant</h2>
-
-      <div class="messages" id="messages">
-        <div class="message bot">welcome to bigchiefer1440. what you need?</div>
-      </div>
-
-      <div class="input-bar">
-        <input type="text" id="userInput" placeholder="type here..." onkeypress="handleKey(event)" />
-      </div>
-    </section>
   </main>
-
-  <script>
-    const messages = document.getElementById('messages');
-    const userInput = document.getElementById('userInput');
-
-    function handleKey(e) {
-      if (e.key === 'Enter') {
-        const input = userInput.value.trim();
-        if (input !== '') {
-          addMessage(input, 'user');
-          userInput.value = '';
-          setTimeout(() => respond(input), 600); // fake delay
-        }
-      }
-    }
-
-    function addMessage(text, sender) {
-      const msg = document.createElement('div');
-      msg.className = `message ${sender}`;
-      msg.textContent = text;
-      messages.appendChild(msg);
-      messages.scrollTop = messages.scrollHeight;
-    }
-
-    function respond(input) {
-      const lower = input.toLowerCase();
-
-      const responses = [
-        {
-          keywords: ['music', 'drop', 'dropping', 'song'],
-          replies: ['probably dropping something soon idk', 'no idea bro', 'music next week', 'just wait brah'],
-        },
-        {
-          keywords: ['shop', 'buy', 'clothes'],
-          replies: ['peep shop', 'might have something up idk', 'give me money'],
-        },
-        {
-          keywords: [],
-          replies: ['@bigchiefer1440 on ig lmk some', 'yo waddup', 'whatever that means'],
-        },
-      ];
-
-      let match =
-        responses.find((set) =>
-          set.keywords.some((k) => lower.includes(k))
-        ) || responses[responses.length - 1]; // default to random if no match
-
-      const reply = match.replies[Math.floor(Math.random() * match.replies.length)];
-      addMessage(reply, 'bot');
-    }
-  </script>
 </body>
 </html>
