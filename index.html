@@ -1,111 +1,188 @@
-<style>
-  body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: #111;
-    color: #fff;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>bigchiefer1440</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .assistant-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: flex-end;
-    padding: 10px;
-  }
+    body {
+      background: white;
+      color: black;
+      font-family: Impact, sans-serif;
+      text-align: center;
+    }
 
-  .messages {
-    flex-grow: 1;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-bottom: 10px;
-  }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f1f1f1;
+      padding: 10px 20px;
+      border-bottom: 2px solid black;
+    }
 
-  .message {
-    max-width: 75%;
-    padding: 10px 14px;
-    border-radius: 16px;
-    font-size: 16px;
-    line-height: 1.4;
-    width: fit-content;
-  }
+    .logo {
+      height: 50px;
+    }
 
-  .user {
-    align-self: flex-end;
-    background: #333;
-  }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex: 1;
+    }
 
-  .bot {
-    align-self: flex-start;
-    background: #1e1e1e;
-    border: 1px solid #444;
-  }
+    .nav-links a {
+      color: black;
+      text-decoration: none;
+      font-size: 20px;
+      position: relative;
+    }
 
-  .input-bar {
-    display: flex;
-    border-top: 1px solid #333;
-    padding-top: 10px;
-  }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 3px;
+      background: black;
+    }
 
-  .input-bar input {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 20px;
-    background: #222;
-    color: white;
-    font-size: 16px;
-    outline: none;
-  }
-</style>
+    main {
+      padding: 60px 20px;
+    }
 
-<div class="assistant-container">
-  <div class="messages" id="messages">
-    <div class="message bot">welcome to bigchiefer1440. what you need?</div>
+    /* assistant styles */
+    #assistant {
+      margin-top: 60px;
+      max-width: 600px;
+      margin-inline: auto;
+    }
+
+    #assistant h2 {
+      margin-bottom: 20px;
+    }
+
+    .messages {
+      background: #f4f4f4;
+      border: 2px solid black;
+      border-radius: 8px;
+      padding: 15px;
+      height: 300px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-family: Impact, sans-serif;
+      font-size: 18px;
+    }
+
+    .message {
+      max-width: 75%;
+      padding: 10px 14px;
+      border-radius: 16px;
+      width: fit-content;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background: #ddd;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: #bbb;
+    }
+
+    .input-bar {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .input-bar input {
+      flex: 1;
+      padding: 12px;
+      font-family: Impact, sans-serif;
+      font-size: 18px;
+      border: 2px solid black;
+      border-radius: 20px;
+      background: white;
+      color: black;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <img src="logo.png" alt="logo" class="logo">
+    <div class="nav-links">
+      <a href="index.html" class="active">home</a>
+      <a href="shop.html">shop</a>
+      <a href="about.html">about</a>
+    </div>
   </div>
-  <div class="input-bar">
-    <input type="text" id="userInput" placeholder="type here..." onkeypress="handleKey(event)">
-  </div>
-</div>
 
-<script>
-  const messages = document.getElementById('messages');
-  const userInput = document.getElementById('userInput');
+  <main>
+    <h1>welcome to bigchiefer1440</h1>
+    <p>this is where the sauce gets cooked. please wear goggles and a lab coat.</p>
 
-  function handleKey(e) {
-    if (e.key === 'Enter') {
-      const input = userInput.value.trim();
-      if (input !== "") {
-        addMessage(input, 'user');
-        userInput.value = "";
-        setTimeout(() => respond(input), 600); // fake delay
+    <!-- assistant block -->
+    <section id="assistant">
+      <h2>chieferOS assistant</h2>
+
+      <div class="messages" id="messages">
+        <div class="message bot">welcome to bigchiefer1440. what you need?</div>
+      </div>
+
+      <div class="input-bar">
+        <input type="text" id="userInput" placeholder="type here..." onkeypress="handleKey(event)">
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const messages = document.getElementById('messages');
+    const userInput = document.getElementById('userInput');
+
+    function handleKey(e) {
+      if (e.key === 'Enter') {
+        const input = userInput.value.trim();
+        if (input !== "") {
+          addMessage(input, 'user');
+          userInput.value = "";
+          setTimeout(() => respond(input), 600); // fake delay
+        }
       }
     }
-  }
 
-  function addMessage(text, sender) {
-    const msg = document.createElement('div');
-    msg.className = `message ${sender}`;
-    msg.textContent = text;
-    messages.appendChild(msg);
-    messages.scrollTop = messages.scrollHeight;
-  }
+    function addMessage(text, sender) {
+      const msg = document.createElement('div');
+      msg.className = `message ${sender}`;
+      msg.textContent = text;
+      messages.appendChild(msg);
+      messages.scrollTop = messages.scrollHeight;
+    }
 
-  function respond(input) {
-    // fake response logic
-    const responses = {
-      "what’s bigchiefer1440": "a secret society of steel and style. only the bold survive.",
-      "how do i cop the chain": "pull up in person. $20. no shipping. no refunds. no fear.",
-      "what’s playing right now": "track 6: 'suicide' — regret never sounded this cold.",
-      "show me something cool": "🧪 SYSTEM FILE UNLOCKED: /vault/blueprint-4201440.jpg"
-    };
+    function respond(input) {
+      const responses = {
+        "what’s bigchiefer1440": "a secret society of steel and style. only the bold survive.",
+        "how do i cop the chain": "pull up in person. $20. no shipping. no refunds. no fear.",
+        "what’s playing right now": "track 6: 'suicide' — regret never sounded this cold.",
+        "show me something cool": "🧪 SYSTEM FILE UNLOCKED: /vault/blueprint-4201440.jpg"
+      };
 
-    const key = Object.keys(responses).find(k => input.toLowerCase().includes(k));
-    const reply = key ? responses[key] : "i don’t know what that means, but it sounds dangerous.";
+      const key = Object.keys(responses).find(k => input.toLowerCase().includes(k));
+      const reply = key ? responses[key] : "i don’t know what that means, but it sounds dangerous.";
 
-    addMessage(reply, 'bot');
-  }
-</script>
+      addMessage(reply, 'bot');
+    }
+  </script>
+</body>
+</html>
