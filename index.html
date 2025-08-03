@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>bigchiefer1440</title>
   <style>
     * {
@@ -121,7 +121,7 @@
 </head>
 <body>
   <div class="top-bar">
-    <img src="logo.png" alt="logo" class="logo">
+    <img src="logo.png" alt="logo" class="logo" />
     <div class="nav-links">
       <a href="index.html" class="active">home</a>
       <a href="shop.html">shop</a>
@@ -142,7 +142,7 @@
       </div>
 
       <div class="input-bar">
-        <input type="text" id="userInput" placeholder="type here..." onkeypress="handleKey(event)">
+        <input type="text" id="userInput" placeholder="type here..." onkeypress="handleKey(event)" />
       </div>
     </section>
   </main>
@@ -154,9 +154,9 @@
     function handleKey(e) {
       if (e.key === 'Enter') {
         const input = userInput.value.trim();
-        if (input !== "") {
+        if (input !== '') {
           addMessage(input, 'user');
-          userInput.value = "";
+          userInput.value = '';
           setTimeout(() => respond(input), 600); // fake delay
         }
       }
@@ -171,16 +171,34 @@
     }
 
     function respond(input) {
-      const responses = {
-        "what’s bigchiefer1440": "a secret society of steel and style. only the bold survive.",
-        "how do i cop the chain": "pull up in person. $20. no shipping. no refunds. no fear.",
-        "what’s playing right now": "track 6: 'suicide' — regret never sounded this cold.",
-        "show me something cool": "🧪 SYSTEM FILE UNLOCKED: /vault/blueprint-4201440.jpg"
-      };
+      const lower = input.toLowerCase();
 
-      const key = Object.keys(responses).find(k => input.toLowerCase().includes(k));
-      const reply = key ? responses[key] : "i don’t know what that means, but it sounds dangerous.";
+      const responses = [
+        {
+          keywords: ['music', 'drop', 'dropping'],
+          replies: [
+            'probably dropping something soon idk',
+            'no idea bro',
+            'music next week',
+            'just wait brah',
+          ],
+        },
+        {
+          keywords: ['shop', 'buy', 'clothes'],
+          replies: ['peep shop', 'might have something up idk', 'give me money'],
+        },
+        {
+          keywords: [],
+          replies: ['@bigchiefer1440 on ig lmk some', 'yo waddup', 'whatever that means'],
+        },
+      ];
 
+      let match =
+        responses.find((set) =>
+          set.keywords.some((k) => lower.includes(k))
+        ) || responses[responses.length - 1]; // default to random if no match
+
+      const reply = match.replies[Math.floor(Math.random() * match.replies.length)];
       addMessage(reply, 'bot');
     }
   </script>
