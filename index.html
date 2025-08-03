@@ -19,9 +19,7 @@
 
     .top-bar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      background: #f1f1f1;
       padding: 10px 20px;
       border-bottom: 2px solid black;
     }
@@ -30,11 +28,14 @@
       height: 50px;
     }
 
+    .spacer {
+      flex: 1;
+    }
+
     .nav-links {
       display: flex;
       gap: 40px;
-      justify-content: center;
-      flex: 1;
+      /* no flex-grow here */
     }
 
     .nav-links a {
@@ -62,15 +63,18 @@
 <body>
   <div class="top-bar">
     <img src="logo.png" alt="logo" class="logo" />
+    <div class="spacer"></div>
     <div class="nav-links">
       <a href="index.html" class="active">home</a>
       <a href="shop.html">shop</a>
       <a href="about.html">about</a>
     </div>
+    <div class="spacer"></div>
   </div>
 
   <main>
     <h1>welcome to bigchiefer1440</h1>
+    <p>this is where the sauce gets cooked. please wear goggles and a lab coat.</p>
   </main>
 </body>
 </html>
